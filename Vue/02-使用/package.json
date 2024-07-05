@@ -1,0 +1,19 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ydmingg/vue.git",
+  "author": "ydmingWin <ydminggg@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "view": "vite preview",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^5.3.3"
+  },
+  "dependencies": {
+    "vue": "^3.4.31"
+  }
+}

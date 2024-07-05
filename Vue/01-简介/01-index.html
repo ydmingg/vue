@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+        // 编写vue
+        // 创建一个跟组件，在vue3中，组件就是一个普通的js对象
+        const Root = {
+            data(){ // data是个函数，需要一个对象作为返回值
+                    // 其中属性会自动添加到组件实例中
+                return {
+                    message: "我是属性值"
+                }
+
+            },
+            // 在模板中，可以直接访问组件实例中的属性{{属性名}}
+            template: "<h1>vue{{message}}erwe</h1>"
+        }
+
+        // // 创建实例
+        // const app = Vue.createApp(Root)
+
+        // // 将实例在页面中挂载
+        // app.mount("#root")
+        Vue.createApp(Root).mount("#root")
+
+
+
+    </script>
+</body>
+</html>

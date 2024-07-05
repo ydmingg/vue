@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 练习</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+        // 组件时用来创建实例的（因为组件时需要互用的）
+        const App = {
+            data(){
+                return {
+                  count: 0  
+
+                  // data中的数据会自动和使用她的视图绑定，数据改变时，视图也会变
+                }
+            },
+            template: "<button @click='count++'>点我一下</button>，被点了{{count}}次",
+        }
+
+        Vue.createApp(App).mount("#root")
+
+
+    </script>
+</body>
+</html>
