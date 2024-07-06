@@ -27,4 +27,3 @@ yarn dev
 ```sh
 yarn build
 ```
-Vue
