@@ -1,6 +1,9 @@
 // 引入vue
-import { createApp } from "vue/dist/vue.esm-bundler.js";
-import App from "./App"
+// import { createApp } from "vue/dist/vue.esm-bundler.js";
+import { createApp } from "vue";
+// import App from "./App"
+import App from "./App.vue"
+
 
 // // 创建一个跟组件(跟组件单独提出来放在App根组件中)
 // const App = { 
