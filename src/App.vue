@@ -6,10 +6,9 @@
 export default {
   data() { 
     return {
-      msg: "Vue"
+      msg: "Vue",
     }
-    
-  }
+  },
   
 }
 
