@@ -1,6 +1,6 @@
 {
-  "name": "vue-project",
-  "version": "0.0.0",
+  "name": "vue",
+  "version": "0.0.102",
   "private": true,
   "type": "module",
   "scripts": {
