@@ -6,6 +6,7 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    // vue({reactivityTransform: true // 设置是否转换}),
     vue(),
   ],
   resolve: {
