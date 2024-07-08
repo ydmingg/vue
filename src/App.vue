@@ -1,6 +1,8 @@
 <script setup>
 import { ref,reactive } from 'vue';
 import MyCard from './components/MyCard.vue';
+import VFor from './01-v-for.vue';
+const arr = ref(["01","02","03"])
 
 // 创建一个变量来记录选项卡的状态
 /**
@@ -31,7 +33,7 @@ const player2 = reactive({
 })
 player2.attrdata = `进度${player2.progress}%`
 
-// v-for
+// 选项1
 const players = reactive([
     {
         rate: 1,
@@ -52,9 +54,31 @@ const players = reactive([
         hot: 133760
     }
 ])
+// 选项2
+const players2 = reactive([
+    {
+        rate: 1,
+        name: "西安",
+        src: "/03.jpg",
+        hot: 933760
+    },
+    {
+        rate: 2,
+        name: "长沙",
+        src: "/01.jpg",
+        hot: 533760
+    },
+    {
+        rate: 3,
+        name: "湖南",
+        src: "/02.jpg",
+        hot: 33760
+    }
+])
 
 // 获取最大的hot
-const maxHot = players[0].hot
+const playersMaxHot = players[0].hot
+const players2MaxHot = players2[0].hot
 
 </script>
 <!-- v-show 指令：
@@ -63,6 +87,7 @@ const maxHot = players[0].hot
 
 
 -->
+    
  
 <template>
     <div class="box">
@@ -73,17 +98,23 @@ const maxHot = players[0].hot
         <main>
             <div v-show="current===0">
                 <!-- <MyCard :item="player"></MyCard> -->
-                <MyCard :item="players[0]" :maxHot="maxHot"></MyCard>
-                <MyCard :item="players[1]" :maxHot="maxHot"></MyCard>
-                <MyCard :item="players[2]" :maxHot="maxHot"></MyCard>
+                <MyCard v-for="players in players" 
+                :item="players" 
+                :max-hot="playersMaxHot"
+                ></MyCard>
+                <!-- <MyCard :item="players[1]" :max-hot="maxHot"></MyCard>
+                <MyCard :item="players[2]" :max-hot="maxHot"></MyCard> -->
             </div>
             <div v-show="current===1">
-                <MyCard :item="player2"></MyCard>
+                <MyCard v-for="players2 in players2" 
+                :item="players2" 
+                :max-hot="players2MaxHot"
+                ></MyCard>
             </div>
             
         </main>
     </div>
-
+    <VFor v-for="name in arr"></VFor>
 </template>
 
 <style scoped>

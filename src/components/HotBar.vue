@@ -6,7 +6,6 @@ const props = defineProps(["hot", "maxHot"])
 
 // 动态width
 const width = computed(() => { 
-    // console.log(props.maxHot);
     return (props.hot / props.maxHot) * 100 + "%"
 })
     

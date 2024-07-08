@@ -7,8 +7,11 @@
 import Photo from './Photo.vue';
 import HotBar from './HotBar.vue';
 
-const { item } = defineProps(["item", "maxHot"]);
-console.log(item.maxHot);
+const props = defineProps(["item", "max-hot"]);
+const item = props.item
+
+
+
 </script>
 <template>
     <section>
@@ -16,7 +19,7 @@ console.log(item.maxHot);
         <div class="rt">
             <div>{{item.name}}</div>
             <!-- <HotBar :value="item.progress" :attrdata="item.attrdata"></HotBar> -->
-            <HotBar :hot="item.hot" :max-hot="item.maxHot"></HotBar>
+            <HotBar :hot="item.hot" :max-hot="props.maxHot"></HotBar>
         </div>
     </section>
 </template>
