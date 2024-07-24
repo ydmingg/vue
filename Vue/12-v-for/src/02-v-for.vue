@@ -30,7 +30,7 @@
     <ul>
         <li v-for="(name,index) in arr">{{index}}--{{name}}</li>
     </ul> -->
-    <div v-for="obj in arr2">{{obj.name}}</div>
+    <div :v-for="obj in arr2">{{obj.name}}</div>
     <hr>
     <!-- <template v-for="obj in arr2">{{obj.name}}</template>
     <hr> -->

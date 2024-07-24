@@ -11,7 +11,7 @@ import B from './components/B.vue';
     <!-- component 是一个动态组件
         component最终是啥标签由is属性决定
     -->
-    <component is="div">我是一个动态组件，由is属性决定</component>
+    <component :is="div">我是一个动态组件，由is属性决定</component>
     <button @click="isShow = !isShow">切换</button>
     <component :is="isShow?A:B"></component>
 </template>
