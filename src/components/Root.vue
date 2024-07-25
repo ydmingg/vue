@@ -4,15 +4,15 @@ import A from './A.vue'
 import B from './B.vue'
 
 // 声明
-const count = ref(0)
-const increment = () => { 
-    count.value++
-}
+// const count = ref(0)
+// const increment = () => { 
+//     count.value++
+// }
 
-provide("count", {
-    count,
-    increment
-})
+// provide("count", {
+//     count,
+//     increment
+// })
 </script>
 
 <template>

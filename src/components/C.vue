@@ -6,11 +6,12 @@ import { inject, ref } from 'vue'
 // const increment = () => {
 //     count.value++
 // }
-const { count, increment} = inject("count")
+// const { count, increment} = inject("count")
+import { countStore } from '@/store/count'
 
 
 </script>
 <template>
-    <h3>ComponentC -- {{count}} -- <button @click="increment">点我</button></h3>
+    <h3>ComponentC -- {{countStore.count}} -- <button @click="countStore.increment">点我</button></h3>
     
 </template>

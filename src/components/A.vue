@@ -7,7 +7,8 @@ import { inject, ref } from 'vue'
 //     count.value++
 // }
 
-const { count, increment} = inject("count")
+// const { count, increment} = inject("count")
+import { countStore } from '@/store/count'
 
 /*
     状态管理:
@@ -30,6 +31,6 @@ const { count, increment} = inject("count")
 
 </script>
 <template>
-    <h3>ComponentA -- {{count}} -- <button @click="increment">点我</button></h3>
+    <h3>ComponentA -- {{countStore.count}} -- <button @click="countStore.increment">点我</button></h3>
     
 </template>
