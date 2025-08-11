@@ -1,9 +1,9 @@
-<script setup>
+<template>
+    <web></web>
 
+</template>
+
+<script setup>
+import web from '../web/index.vue'
 
 </script>
-    
- 
-<template>
-    <h1></h1>
-</template>
