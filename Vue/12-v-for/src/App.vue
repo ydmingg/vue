@@ -98,7 +98,7 @@ const players2MaxHot = players2[0].hot
         <main>
             <div v-show="current===0">
                 <!-- <MyCard :item="player"></MyCard> -->
-                <MyCard v-for="players in players" 
+                <MyCard :v-for="players in players" 
                 :item="players" 
                 :max-hot="playersMaxHot"
                 ></MyCard>
@@ -106,7 +106,7 @@ const players2MaxHot = players2[0].hot
                 <MyCard :item="players[2]" :max-hot="maxHot"></MyCard> -->
             </div>
             <div v-show="current===1">
-                <MyCard v-for="players2 in players2" 
+                <MyCard :v-for="players2 in players2" 
                 :item="players2" 
                 :max-hot="players2MaxHot"
                 ></MyCard>
@@ -114,7 +114,7 @@ const players2MaxHot = players2[0].hot
             
         </main>
     </div>
-    <VFor v-for="name in arr"></VFor>
+    <VFor :v-for="name in arr"></VFor>
 </template>
 
 <style scoped>
