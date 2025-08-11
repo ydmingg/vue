@@ -103,20 +103,20 @@
 </script>
 
 <script lang="ts">
-// =======================
-// 模块5：WeatherCard 局部组件（支持 Vue 3.4+）
-// =======================
-import { defineComponent } from "vue";
+	// =======================
+	// 模块5：WeatherCard 局部组件（支持 Vue 3.4+）
+	// =======================
+	import { defineComponent } from "vue";
 
-export const WeatherCard = defineComponent({
-  name: "WeatherCard",
-  props: {
-    weather: {
-      type: Object,
-      required: true
-    }
-  },
-  template: `
+	export const WeatherCard = defineComponent({
+		name: "WeatherCard",
+		props: {
+			weather: {
+				type: Object,
+				required: true,
+			},
+		},
+		template: `
     <div class="output">
       <p>
         <strong>城市：</strong>{{ weather.city }}<br>
@@ -128,8 +128,8 @@ export const WeatherCard = defineComponent({
         </span>
       </p>
     </div>
-  `
-});
+  `,
+	});
 </script>
 
 <style scoped>
