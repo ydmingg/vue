@@ -67,6 +67,16 @@
 		</section>
 
 		<section class="section">
+			<h2>示例：用户信息展示</h2>
+			<div class="output" v-if="user">
+				<p>
+					<strong>ID：</strong>{{ user.id }}<br>
+					<strong>姓名：</strong>{{ user.name }}<br>
+					<strong>年龄：</strong>{{ user.age }}<br>
+					<strong>管理员：</strong>{{ user.isAdmin ? "是" : "否" }}
+				</p>
+			</div>
+
 			<h2>示例：输入城市，查询天气</h2>
 			<div class="output">
 				<div class="">
@@ -130,6 +140,32 @@
 	// 3. boolean: 布尔类型，true 或 false
 	let isActive: boolean = true;
 	// 4. any: 任意类型，可以绕过类型检查
+
+// 示例二：定义一个用户类型
+interface User {
+    id: number;
+    name: string;
+    age: number;
+    isAdmin: boolean;
+}
+
+const user: User = {
+    id: 1,
+    name: "Alice",
+    age: 25,
+    isAdmin: true,
+};
+
+// 示例3：泛型函数打印任意类型数组
+function printArray<T>(arr: T[]): void {
+    arr.forEach(item => console.log(item));
+}
+
+// 示例调用
+const numbers = [1, 2, 3];
+const strings = ["a", "b", "c"];
+printArray(numbers);
+printArray(strings);
 
 	interface WeatherInfo {
 		city: string;

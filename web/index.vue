@@ -32,7 +32,9 @@
 
 
     <!-- 第一节- TS 基础类型（string、number、boolean、any） -->
-    <tsBase1></tsBase1>
+    <!-- <tsBase1></tsBase1> -->
+    <!-- 第二节- Vite 入门、项目初始化 -->
+    <tsBase2></tsBase2>
 
 </template>
 <script setup>
@@ -55,5 +57,6 @@ import es6Base7 from '../web/es6/7.vue'
 
 // typescript
 import tsBase1 from '../web/ts/1.vue'
+import tsBase2 from '../web/ts/2.vue'
 
 </script>
