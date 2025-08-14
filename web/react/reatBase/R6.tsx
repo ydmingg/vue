@@ -1,6 +1,13 @@
 import React from 'react'
 import R6Child from './R6Child'
 
+const a = i => console.log(i + 1)
+const b = (i, x) => x(i)
+
+b(1, a)
+
+
+
 // 状态提升：将子组件的状态转移到父组件进行管理
 function R6() {
     // 转换函数：摄氏度 → 华氏度
