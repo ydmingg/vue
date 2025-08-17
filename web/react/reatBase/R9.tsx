@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
 	BrowserRouter as Router,
 	Routes,
@@ -8,37 +8,53 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 
-const NewsContent = () => {
-	const { newsId } = useParams();
-	const navigate = useNavigate();
-	const [news, setNews] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
+interface Article {
+  userId?: number;
+  id: number;
+  title: string;
+  body: string;
+}
 
-	useEffect(() => {
-		const fetchNews = async () => {
-			try {
-				setLoading(true);
-				const response = await axios.get(
-                    "https://jsonplaceholder.typicode.com/posts"
-                );
-                
-				setNews(
-					response.data.map((article, index) => ({
+interface NewsItem {
+  id: string;      // headline0, headline1 ...
+  title: string;
+  content: string;
+}
+
+const NewsContent = () => {
+	const { newsId } = useParams<{ newsId: string }>();
+	const navigate = useNavigate();
+	const [news, setNews] = useState<NewsItem[]>([]);
+	const [loading, setLoading] = useState<boolean>(true);
+	const [error, setError] = useState<string | null>(null);
+
+	const fetchNews = useCallback(async () => {
+		try {
+			setLoading(true);
+			const response = await axios.get<Article[]>("https://jsonplaceholder.typicode.com/posts");
+			setNews(
+				response.data.map(
+					(article: Article, index: number): NewsItem=> ({
 						id: `headline${index}`,
 						title: article.title,
 						content: article.body || "暂无内容",
-					}))
-				);
-			} catch (err) {
-				setError(err.message);
-			} finally {
-				setLoading(false);
-			}
-		};
-
-		fetchNews();
+					})
+				)
+			);
+		} catch (err: unknown) {
+			setError(err instanceof Error ? err.message : "未知错误");
+		} finally {
+			setLoading(false);
+		}
 	}, []);
+
+	useEffect(() => {
+		const source = axios.CancelToken.source();
+		fetchNews();
+		return () => {
+			source.cancel("组件卸载，取消请求");
+		};
+	}, [fetchNews]);
 
 	const currentNews = news.find((item) => item.id === newsId) || news[0];
 
@@ -46,7 +62,7 @@ const NewsContent = () => {
 	if (error)
 		return (
 			<div style={{ padding: "20px", color: "red" }}>
-				加载失败: {error}
+				{error}
 			</div>
 		);
 
@@ -83,12 +99,8 @@ const NewsContent = () => {
 
 			{/* 主内容区 */}
 			<main style={{ flex: 1, padding: "20px", overflow: "auto" }}>
-				{currentNews && (
-					<>
-						<h2>{currentNews.title}</h2>
-						<p>{currentNews.content}</p>
-					</>
-				)}
+				<h2>{currentNews.title}</h2>
+				<p>{currentNews.content}</p>
 			</main>
 		</div>
 	);
@@ -96,7 +108,7 @@ const NewsContent = () => {
 
 const R9 = () => {
 	return (
-        <Router future={{v7_relativeSplatPath: true, v7_startTransition: true}}>
+		<Router future={{v7_relativeSplatPath: true, v7_startTransition: true}}>
 			<Routes>
 				<Route path="/:newsId" element={<NewsContent />} />
 				<Route path="/" element={<NewsContent />} />

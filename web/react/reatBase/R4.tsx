@@ -14,8 +14,8 @@ function R4() {
 		}
 	};
 
-	let welcome,
-		btnText = "";
+	let welcome: string,
+		btnText: string = "";
 	if (isLogin) {
 		welcome = "欢迎回来";
 		btnText = "退出";
@@ -29,7 +29,7 @@ function R4() {
 
     const o1 = { a: 1, b: 1, c: 1, d: 1 }
     const o2 = { ...o1 };
-    console.log(Array.from({ length: 1000 }, (v,i) => `User ${i + 1}`)
+    console.log(Array.from({ length: 1000 }, (_v,i) => `User ${i + 1}`)
 );
     
 	return (

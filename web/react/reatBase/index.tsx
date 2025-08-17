@@ -10,8 +10,6 @@ import R9 from "./R9";
 
 
 function ReatBase() {
-    
-
 	return (
 		<>
 			{/* <R1 /> */}

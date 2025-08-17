@@ -8,8 +8,9 @@ function R6Child({ scale, temperature=0, onTemperatureChange }) {
         f: '华氏度'
     }
 
-    const handleChange = (e) => { 
-        onTemperatureChange(e.target.value)
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => { 
+        const value = parseFloat(e.target.value)
+        onTemperatureChange(value)
     }
     
 	return (

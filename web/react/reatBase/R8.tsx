@@ -22,7 +22,7 @@ function R8() {
       const [value, setValue] = useState("");
     
       // 假设这是个耗时计算
-      const expensiveCalculation = (num) => {
+      const expensiveCalculation = (num:number) => {
         console.log("执行了耗时计算");
         let total = 0;
         for (let i = 0; i < 1e7; i++) {
@@ -31,7 +31,7 @@ function R8() {
         return total;
       };
         
-        const hhh = (e) => {
+        const hhh = (e:React.ChangeEvent<HTMLInputElement>) => {
             return setValue(e.target.value)
         }
         
