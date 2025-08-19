@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+// import { GetStaticProps } from "next";
 
 type Props = {
 	id: number;
@@ -16,8 +16,12 @@ type Props = {
 // 	data: Props[];
 // };
 
-export default async function Home() {
-	const res = await fetch("http://localhost:3000/data.json");
+
+
+export default async function Homea() {
+    const res = await fetch("http://localhost:3000/data.json", {
+        cache: "no-store"
+    });
 	const data: Props[] = await res.json();
 
 	return (

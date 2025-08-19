@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+// import { GetServerSideProps } from "next";
 import Link from "next/link";
 
 type Props = {
@@ -25,7 +25,9 @@ type Props = {
 //     data: Props[];
 // };
 export default async function Home() {
-    const res = await fetch("http://localhost:3000/data.json");
+    const res = await fetch("http://localhost:3000/data.json", {
+        cache: "no-store"
+    });
     const data: Props[] = await res.json();
 
 	return (
