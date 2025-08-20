@@ -24,12 +24,22 @@ type Props = {
 // type HomeProps = {
 //     data: Props[];
 // };
-export default async function Home() {
-    const res = await fetch("http://localhost:3000/data.json", {
-        cache: "no-store"
-    });
-    const data: Props[] = await res.json();
 
+export default async function Home() {
+    const fs = await import("fs");
+    const path = await import("path")
+    const filePath = path.join(process.cwd(), "public", "data.json");
+    const dataString = fs.readFileSync(filePath, "utf8");
+    const data: Props[] = JSON.parse(dataString)
+    // const data: Props[] = JSON.parse(dataString.toString())
+    
+    // const data:Props[] = JSON.parse(dataString.toString())
+    // console.log(data);
+    // const res = await fetch("http://localhost:3000/data.json", {
+    //     cache: "no-store"
+    // });
+    // const data: Props[] = await res.json();
+    
 	return (
 		<div className="">
             <div className="">nextjs</div>
