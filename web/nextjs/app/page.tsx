@@ -1,10 +1,12 @@
+import fs from "fs";
+import path from "path";
 // import { GetServerSideProps } from "next";
 import Link from "next/link";
 
-type Props = {
-    id: number;
-    name: string;
-    completed: boolean;
+type Prop = {
+	id: number;
+	name: string;
+	completed: boolean;
 };
 
 // export const getServerSideProps: GetServerSideProps= async () => {
@@ -16,8 +18,8 @@ type Props = {
 
 //     // 服务器请求数据
 //     const res = await fetch("http://localhost:3000/data.json");
-//     const data: Props[] = await res.json();
-    
+//     const data: Prop[] = await res.json();
+
 //     return { props: { data } };
 // };
 
@@ -25,27 +27,28 @@ type Props = {
 //     data: Props[];
 // };
 
+const getPosts = () => {
+	const filePath = path.join(process.cwd(), "public", "data.json");
+	const dataString = fs.readFileSync(filePath, "utf8");
+	return JSON.parse(dataString) as Prop[];
+};
+
+// export async function generateStaticParams() {
+//     const props = getPosts();
+//     return posts.map((item) => ({ 
+//         id: item.id.toString() 
+//     }));
+// }
+
 export default async function Home() {
-    const fs = await import("fs");
-    const path = await import("path")
-    const filePath = path.join(process.cwd(), "public", "data.json");
-    const dataString = fs.readFileSync(filePath, "utf8");
-    const data: Props[] = JSON.parse(dataString)
-    // const data: Props[] = JSON.parse(dataString.toString())
-    
-    // const data:Props[] = JSON.parse(dataString.toString())
-    // console.log(data);
-    // const res = await fetch("http://localhost:3000/data.json", {
-    //     cache: "no-store"
-    // });
-    // const data: Props[] = await res.json();
-    
+    const props = getPosts();
+
 	return (
 		<div className="">
-            <div className="">nextjs</div>
-            <Link href="/blog">lisa</Link>
-            <a href="/blog">hello world</a>
-            {data.map((item) => {
+			<div className="">nextjs</div>
+			<Link href="/blog">lisa</Link>
+			<a href="/blog">hello world</a>
+			{props.map((item) => {
 				return (
 					<div key={item.id}>
 						<input
