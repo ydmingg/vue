@@ -29,7 +29,7 @@ export default function RootLayout({
             <body className={`antialiased`}>
                 <Header/>
                 <main>{children}</main>
-                <Footer style={{color: "red"}} />
+                <Footer style={{color: "skyblue"}} />
             </body>
 		</html>
 	);
