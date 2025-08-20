@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-// import { GetServerSideProps } from "next";
 import Link from "next/link";
 
 type Prop = {
@@ -35,13 +34,22 @@ const getPosts = () => {
 
 // export async function generateStaticParams() {
 //     const props = getPosts();
-//     return posts.map((item) => ({ 
-//         id: item.id.toString() 
+//     return posts.map((item) => ({
+//         id: item.id.toString()
 //     }));
 // }
 
-export default async function Home() {
+export default async function Home({
+	searchParams,
+}: {
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
     const props = getPosts();
+    
+    //
+    const { age } = await searchParams
+    console.log(age);
+    
 
 	return (
 		<div className="">
