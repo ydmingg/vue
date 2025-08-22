@@ -1,9 +1,14 @@
 {
-  "compilerOptions": {
-    "jsx": "react",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "exclude": ["node_modules", "dist"]
+    "compilerOptions": {
+        "jsx": "react",
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
 }
