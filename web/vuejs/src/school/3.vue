@@ -1,15 +1,23 @@
 <template>
-    <button ref="myButton">我是button</button>
+    <h3>今天天气很{{ info }}</h3>
+    <button ref="myButton" @click="changeWeather">我是button</button>
 </template>
 
 <script setup>
-import { useTemplateRef, onMounted } from 'vue'
+import { useTemplateRef, computed, onMounted, ref } from 'vue'
+const isHot = ref(true)
+
+// 
+const info = computed(() => isHot.value ? '炎热' : '凉爽');
+
 
 const myBtn = useTemplateRef('myButton')
 
-console.log(myBtn.value)
+const changeWeather = () => { 
+    isHot.value = !isHot.value
+}
 
-onMounted(()=>{
+onMounted(() => {
     console.log(myBtn.value)
 })
 
